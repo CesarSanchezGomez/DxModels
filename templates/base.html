@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DxModels - Data Models{% endblock %}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<!-- HEADER FULL WIDTH -->
+<header class="header">
+    <div class="header-content">
+        <a href="/" class="logo-link">
+            <img
+                    src="/static/images/logo-dxgrow-inverted-300x180.png"
+                    alt="Dxgrow"
+                    class="logo-img"
+            >
+        </a>
+        <div class="header-text">
+            <h1 class="logo">DxModels</h1>
+            <p class="subtitle">SAP SuccessFactors · Data Models</p>
+        </div>
+
+        <ul class="header-quicklinks">
+            <li class="{% if request.path == '/' %}active{% endif %}"><a href="/">Inicio</a></li>
+            <li class="{% if request.path == '/cdm' %}active{% endif %}"><a href="/cdm">CDM</a></li>
+            <li class="{% if request.path == '/csf-cdm' %}active{% endif %}"><a href="/csf-cdm">CSF CDM</a></li>
+            <li class="{% if request.path == '/sdm' %}active{% endif %}"><a href="/sdm">SDM</a></li>
+            <li class="{% if request.path == '/csf-sdm' %}active{% endif %}"><a href="/csf-sdm">CSF SDM</a></li>
+            <li class="{% if request.path == '/completo' %}active{% endif %}"><a href="/completo">CDM Completo</a></li>
+        </ul>
+
+    </div>
+</header>
+
+<!-- MAIN CENTRADO -->
+<main class="main-content">
+    <div class="content-wrapper">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+
+<!-- FOOTER FULL WIDTH -->
+<footer class="footer">
+    <p><b>&copy; @2026 Dxgrow. Todos los derechos reservados. | DxModels v2.0 by Diego & Cesar</b></p>
+</footer>
+
+<!-- Toast -->
+<div id="toast-container"></div>
+
+<!-- CodeMirror JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+
+<!-- App JS -->
+<script src="/static/js/app.js"></script>
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

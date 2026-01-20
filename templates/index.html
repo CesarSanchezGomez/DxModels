@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}DxModels - Inicio{% endblock %}
+
+{% block content %}
+    <div class="section-title">
+        <h2 class="page-title">Modelos de Datos Individuales</h2>
+        <p>Seleccione un modelo de datos para procesar</p>
+    </div>
+
+    <div class="cards-grid">
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Corporate Data Model</h3>
+            </div>
+            <div class="card-body">
+                <p>Depure archivos CDM filtrando por los idiomas que necesite conservar.</p>
+                <div class="card-actions">
+                    <a href="/cdm" class="btn btn-primary">Abrir CDM</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>CSF Corporate Data Model</h3>
+            </div>
+            <div class="card-body">
+                <p>Procese CSF CDM con filtros específicos de países e idiomas.</p>
+                <div class="card-actions">
+                    <a href="/csf-cdm" class="btn btn-primary">Abrir CSF CDM</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Succession Data Model</h3>
+            </div>
+            <div class="card-body">
+                <p>Depure archivos SDM aplicando filtros de idioma según sus necesidades.</p>
+                <div class="card-actions">
+                    <a href="/sdm" class="btn btn-primary">Abrir SDM</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>CSF Succession Data Model</h3>
+            </div>
+            <div class="card-body">
+                <p>Procese CSF SDM con selección múltiple de países e idiomas.</p>
+                <div class="card-actions">
+                    <a href="/csf-sdm" class="btn btn-primary">Abrir CSF SDM</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">
+        <h2 class="page-title">Procesamiento Avanzado</h2>
+        <p>Procese múltiples modelos simultáneamente</p>
+    </div>
+
+    <div class="complete-section">
+        <div class="card">
+            <div class="card-header">
+                <h3>Data Model Completo</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Procese los 4 modelos de datos en una sola operación.</strong></p>
+                <p>Aplique la misma configuración de países e idiomas a todos los archivos y descargue el resultado en
+                    un archivo ZIP comprimido.</p>
+                <a href="/completo" class="btn btn-featured">Iniciar Procesamiento Completo</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
