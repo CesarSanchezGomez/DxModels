@@ -1,6 +1,4 @@
-# data.py
-# Diccionarios de países e idiomas.
-# Guardar como data.py
+# app/services/data.py
 
 PAISES_DISPONIBLES = {
     "Angola (AGO)": "AGO",

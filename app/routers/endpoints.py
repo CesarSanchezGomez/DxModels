@@ -7,7 +7,7 @@ from app.models.schemas import (
     ProcesamientoResponse,
     PaisesIdiomasResponse
 )
-from app.services import procesamiento as proc
+from app.services import processing as proc
 from app.services.data import PAISES_DISPONIBLES, IDIOMAS_DISPONIBLES
 import tempfile
 import zipfile
@@ -16,7 +16,7 @@ import os
 router = APIRouter()
 
 
-@router.get("/paises", response_model=PaisesIdiomasResponse)
+@router.get("/countries", response_model=PaisesIdiomasResponse)
 async def obtener_paises():
     paises_ordenados = dict(
         sorted(
@@ -27,7 +27,7 @@ async def obtener_paises():
     return {"data": paises_ordenados}
 
 
-@router.get("/idiomas", response_model=PaisesIdiomasResponse)
+@router.get("/languages", response_model=PaisesIdiomasResponse)
 async def obtener_idiomas():
     idiomas_ordenados = dict(
         sorted(
@@ -38,7 +38,7 @@ async def obtener_idiomas():
     return {"data": idiomas_ordenados}
 
 
-@router.post("/procesar/cdm", response_model=ProcesamientoResponse)
+@router.post("/process/cdm", response_model=ProcesamientoResponse)
 async def procesar_cdm(request: ProcesamientoRequest):
     """Procesa Corporate Data Model"""
     try:
@@ -55,7 +55,7 @@ async def procesar_cdm(request: ProcesamientoRequest):
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.post("/procesar/sdm", response_model=ProcesamientoResponse)
+@router.post("/process/sdm", response_model=ProcesamientoResponse)
 async def procesar_sdm(request: ProcesamientoRequest):
     """Procesa Succession Data Model"""
     try:
@@ -72,7 +72,7 @@ async def procesar_sdm(request: ProcesamientoRequest):
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.post("/procesar/csf", response_model=ProcesamientoResponse)
+@router.post("/process/csf", response_model=ProcesamientoResponse)
 async def procesar_csf(request: ProcesamientoRequest):
     """Procesa Country Specific Fields"""
     try:
@@ -96,7 +96,7 @@ async def procesar_csf(request: ProcesamientoRequest):
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.post("/procesar/completo")
+@router.post("/process/full")
 async def procesar_completo(request: ProcesamientoCompletoRequest):
     """Procesa los 4 Data Models y genera un ZIP"""
     try:

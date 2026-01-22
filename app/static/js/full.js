@@ -1,6 +1,4 @@
-// app/static/js/completo.js
-// Lógica para Data Model Completo
-
+// static/js/full.js
 let paisesData = {};
 let idiomasData = {};
 let selectedPaises = [];
@@ -46,8 +44,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function loadData() {
     try {
         const [paisesRes, idiomasRes] = await Promise.all([
-            fetchAPI('/api/paises'),
-            fetchAPI('/api/idiomas')
+            fetchAPI('/api/countries'),
+            fetchAPI('/api/languages')
         ]);
 
         paisesData = paisesRes.data;
@@ -242,7 +240,7 @@ function confirmModal() {
     showToast(`${values.length} elementos seleccionados`, 'success');
 }
 
-// Procesar completo
+// Procesar completo - UPDATED FOR ENGLISH API
 async function procesarCompleto() {
     if (selectedIdiomas.length === 0) {
         showToast('Selecciona al menos un idioma', 'error');
@@ -276,7 +274,7 @@ async function procesarCompleto() {
 
         addLog('Enviando datos al servidor...');
 
-        const response = await fetch('/api/procesar/completo', {
+        const response = await fetch('/api/process/full', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

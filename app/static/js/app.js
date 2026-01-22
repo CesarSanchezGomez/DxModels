@@ -1,9 +1,5 @@
-// app/static/js/app.js
-// Utilidades comunes para toda la aplicación
-
-// ==========================================
-// TOAST NOTIFICATIONS
-// ==========================================
+// static/js/app.js
+// Toast Notifications
 function showToast(message, type = 'success') {
     const container = document.getElementById('toast-container');
     const toast = document.createElement('div');
@@ -16,9 +12,7 @@ function showToast(message, type = 'success') {
     }, 5000);
 }
 
-// ==========================================
-// LOADER
-// ==========================================
+// Loader
 function showLoader() {
     document.getElementById('loader').style.display = 'flex';
 }
@@ -27,9 +21,7 @@ function hideLoader() {
     document.getElementById('loader').style.display = 'none';
 }
 
-// ==========================================
-// API HELPERS
-// ==========================================
+// Api Helpers
 async function fetchAPI(url, options = {}) {
     try {
         const response = await fetch(url, {
@@ -52,12 +44,9 @@ async function fetchAPI(url, options = {}) {
     }
 }
 
-// ==========================================
-// FILE UTILITIES
-// ==========================================
-
+// File Utilities
 /**
- * Descarga un archivo con el contenido proporcionado
+ * Descarga un archivo con el contenido y nombre especificados
  */
 function downloadFile(content, filename) {
     const blob = new Blob([content], { type: 'text/xml' });
@@ -108,9 +97,7 @@ function readFile(file) {
     });
 }
 
-// ==========================================
-// CLIPBOARD UTILITIES
-// ==========================================
+// Clipboard Utility
 async function copyToClipboard(text) {
     try {
         await navigator.clipboard.writeText(text);

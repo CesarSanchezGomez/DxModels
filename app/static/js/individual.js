@@ -1,10 +1,4 @@
-// =======================================================
-// INDIVIDUAL.JS – Selección unificada con modal (FINAL)
-// =======================================================
-
-// ===============================
-// STATE
-// ===============================
+// static/js/individual.js
 let paisesData = {};
 let idiomasData = {};
 let selectedPaises = [];
@@ -16,9 +10,7 @@ let currentModalType = '';
 let inputEditor = null;
 let outputEditor = null;
 
-// ===============================
-// VALIDATORS
-// ===============================
+// Validators
 const XML_VALIDATORS = {
     cdm: (c) => c.includes('<corporate-data-model'),
     sdm: (c) => c.includes('<succession-data-model'),
@@ -38,26 +30,22 @@ const XML_NAMES = {
     csf_sdm: 'CSF Succession Data Model'
 };
 
-// ===============================
-// INIT
-// ===============================
+// Init
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
     initializeEditors();
     setupEventListeners();
 });
 
-// ===============================
-// DATA
-// ===============================
+// Data
 async function loadData() {
     try {
         if (requireCountries) {
-            const p = await fetchAPI('/api/paises');
+            const p = await fetchAPI('/api/countries');
             paisesData = p.data;
         }
 
-        const i = await fetchAPI('/api/idiomas');
+        const i = await fetchAPI('/api/languages');
         idiomasData = i.data;
 
     } catch (e) {
@@ -65,9 +53,7 @@ async function loadData() {
     }
 }
 
-// ===============================
-// EDITORS
-// ===============================
+// Editors
 function initializeEditors() {
     const baseConfig = {
         mode: 'xml',
@@ -89,9 +75,7 @@ function initializeEditors() {
     );
 }
 
-// ===============================
-// EVENT LISTENERS
-// ===============================
+// Event Listeners
 function setupEventListeners() {
 
     // Países
@@ -131,9 +115,7 @@ function setupEventListeners() {
         downloadFile(outputEditor.getValue(), `${dataModel}_depurado.xml`);
 }
 
-// ===============================
-// FILE INPUT
-// ===============================
+// File input
 function setupFileInput() {
     const input = document.getElementById('xml-file');
     const label = document.getElementById('file-name');
@@ -184,9 +166,7 @@ function resetFileInput(label, input, message) {
     showToast(message, 'error');
 }
 
-// ===============================
-// MODAL
-// ===============================
+// Modal
 function openModal(type, title, data) {
     currentModalType = type;
 
@@ -259,9 +239,7 @@ function closeModal() {
     document.getElementById('modal-selector').classList.remove('active');
 }
 
-// ===============================
-// PROCESSING
-// ===============================
+// Process XML
 async function procesarXML() {
 
     if (!selectedIdiomas.length) {
@@ -281,8 +259,8 @@ async function procesarXML() {
 
     const endpoint =
         dataModel === 'cdm' || dataModel === 'sdm'
-            ? `/api/procesar/${dataModel}`
-            : '/api/procesar/csf';
+            ? `/api/process/${dataModel}`
+            : '/api/process/csf';
 
     showLoader();
 
@@ -307,9 +285,7 @@ async function procesarXML() {
     }
 }
 
-// ===============================
-// CLEAN
-// ===============================
+// Clear form
 function limpiar() {
     // Verificar si hay algo que limpiar
     const hasFile = xmlContent !== '';

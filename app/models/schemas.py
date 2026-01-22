@@ -26,3 +26,16 @@ class ProcesamientoCompletoRequest(BaseModel):
 
 class PaisesIdiomasResponse(BaseModel):
     data: Dict[str, str]
+
+class LoginRequest(BaseModel):
+    pass
+
+class UserResponse(BaseModel):
+    id: str
+    email: str
+    created_at: str
+
+class AuthResponse(BaseModel):
+    access_token: str
+    refresh_token: str
+    user: UserResponse
