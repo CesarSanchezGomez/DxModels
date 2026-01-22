@@ -21,34 +21,46 @@
 <header class="header">
     <div class="header-content">
         <div class="header-top">
-            <a href="/" class="logo-link">
-                <img
-                        src="/static/images/logo-dxgrow-inverted-300x180.png"
-                        alt="Dxgrow"
-                        class="logo-img"
-                >
-            </a>
+            <div class="header-left">
+                <a href="/" class="logo-link">
+                    <img
+                            src="/static/images/logo-dxgrow-inverted-300x180.png"
+                            alt="Dxgrow"
+                            class="logo-img"
+                    >
+                </a>
+            </div>
+
             <div class="header-text">
                 <h1 class="logo">DxModels</h1>
                 <p class="subtitle">SAP SuccessFactors · Data Models</p>
             </div>
 
-            <div class="user-menu">
-                <img class="user-avatar" id="user-avatar" title="" alt="User avatar">
-                <a href="/auth/logout" class="logout-btn">Cerrar sesión</a>
+            <div class="header-controls">
+                <div class="user-menu">
+                    <img class="user-avatar" id="user-avatar" src="/static/images/logo-dxgrow-300x180.png" title=""
+                         alt="User avatar">
+                    <a href="/auth/logout" class="logout-btn">Cerrar sesión</a>
+                </div>
+                <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-controls="header-quicklinks"
+                        aria-label="Abrir menú">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
             </div>
         </div>
-
-        <ul class="header-quicklinks">
-            <li class="{% if request.path == '/' %}active{% endif %}"><a href="/">Inicio</a></li>
-            <li class="{% if request.path == '/cdm' %}active{% endif %}"><a href="/cdm">CDM</a></li>
-            <li class="{% if request.path == '/csf-cdm' %}active{% endif %}"><a href="/csf-cdm">CSF CDM</a></li>
-            <li class="{% if request.path == '/sdm' %}active{% endif %}"><a href="/sdm">SDM</a></li>
-            <li class="{% if request.path == '/csf-sdm' %}active{% endif %}"><a href="/csf-sdm">CSF SDM</a></li>
-            <li class="{% if request.path == '/full' %}active{% endif %}"><a href="/full">CDM Completo</a></li>
-        </ul>
     </div>
 </header>
+
+<ul class="header-quicklinks" id="header-quicklinks">
+    <li class="{% if request.path == '/' %}active{% endif %}"><a href="/">Inicio</a></li>
+    <li class="{% if request.path == '/cdm' %}active{% endif %}"><a href="/cdm">CDM</a></li>
+    <li class="{% if request.path == '/csf-cdm' %}active{% endif %}"><a href="/csf-cdm">CSF CDM</a></li>
+    <li class="{% if request.path == '/sdm' %}active{% endif %}"><a href="/sdm">SDM</a></li>
+    <li class="{% if request.path == '/csf-sdm' %}active{% endif %}"><a href="/csf-sdm">CSF SDM</a></li>
+    <li class="{% if request.path == '/full' %}active{% endif %}"><a href="/full">CDM Completo</a></li>
+</ul>
 
 <main class="main-content">
     <div class="content-wrapper">
@@ -71,3 +83,4 @@
 
 </body>
 </html>
+
