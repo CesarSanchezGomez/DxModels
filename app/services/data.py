@@ -143,7 +143,6 @@ IDIOMAS_DISPONIBLES = {
     "Alemán (Alemania)": "de-DE",
     "Griego (Grecia)": "el-GR",
     "Inglés (Reino Unido)": "en-GB",
-    "Inglés (DEBUG)": "en-DEBUG",
     "Español (España)": "es-ES",
     "Español (México)": "es-MX",
     "Estonio (Estonia)": "et-EE",

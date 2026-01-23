@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 
 XML_LANG_KEY = '{http://www.w3.org/XML/1998/namespace}lang'
 
+DEBUG_LANG = 'en-DEBUG'
 
 def _strip_comments_and_clean_lines(xml_str: str) -> str:
     if not xml_str or not xml_str.strip():
@@ -38,11 +39,18 @@ def _norm_list(x):
     return []
 
 
+def _ensure_debug_language(idiomas_list):
+    idiomas_set = set(idiomas_list) if idiomas_list else set
+    idiomas_set.add(DEBUG_LANG)
+    return list(idiomas_set)
+
+
 # =========================
 # CDM
 # =========================
 
 def procesar_cdm(xml_str, idiomas_objetivo=None):
+    idiomas_objetivo = _ensure_debug_language(idiomas_objetivo)
     xml_clean = _strip_comments_and_clean_lines(xml_str)
 
     inicio = xml_clean.find("<corporate-data-model")
@@ -72,6 +80,7 @@ def procesar_cdm(xml_str, idiomas_objetivo=None):
 # =========================
 
 def procesar_sdm(xml_str, idiomas_objetivo=None):
+    idiomas_objetivo = _ensure_debug_language(idiomas_objetivo)
     xml_clean = _strip_comments_and_clean_lines(xml_str)
 
     inicio = xml_clean.find("<succession-data-model")
@@ -101,7 +110,6 @@ def procesar_sdm(xml_str, idiomas_objetivo=None):
 # =========================
 
 def detectar_tipo_csf(xml_clean: str) -> str:
-    # Extraer solo el contenido de country-specific-fields
     inicio = xml_clean.find("<country-specific-fields")
     fin = xml_clean.find("</country-specific-fields>")
 
@@ -127,7 +135,9 @@ def detectar_tipo_csf(xml_clean: str) -> str:
 
     raise ValueError("CSF inválido: no se pudo determinar el tipo")
 
+
 def procesar_csf(xml_str, paises_objetivo=None, idiomas_objetivo=None, tipo_esperado=None):
+    idiomas_objetivo = _ensure_debug_language(idiomas_objetivo)
     xml_clean = _strip_comments_and_clean_lines(xml_str)
 
     tipo_detectado = detectar_tipo_csf(xml_clean)
@@ -193,6 +203,7 @@ def procesar_data_model_completo(
     """
 
     idiomas_norm = _norm_list(idiomas)
+    idiomas_norm = _ensure_debug_language(idiomas_norm)
     paises_norm = _norm_list(paises)
 
     resultados = {}
