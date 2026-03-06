@@ -50,33 +50,63 @@
     display: grid;
     grid-template-columns: 2fr 2fr;
     gap: var(--sp-5);
-    align-items: start;
+    align-items: stretch;
 }
 
 .form-grid-2col .form-group {
     margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-grid-2col .form-group > label:first-of-type {
+    flex-shrink: 0;
+    margin-bottom: var(--sp-3);
+}
+
+.form-grid-2col .file-label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    padding: var(--sp-3);
+    min-height: 0;
+    margin: 0;
+}
+
+.form-grid-2col .file-label .file-name {
+    margin: 0;
+    font-size: 10px;
 }
 
 .form-group-stack {
     display: flex;
     flex-direction: column;
-    gap: var(--sp-3);
 }
 
-.form-group-stack > label {
-    margin-bottom: 0;
+.form-group-stack > label:first-child {
+    margin-bottom: var(--sp-3);
+    flex-shrink: 0;
+}
+
+.form-group-stack .selection-summary {
+    flex-shrink: 0;
 }
 
 .form-inline-actions {
     display: flex;
     gap: var(--sp-2);
-    margin-top: auto;
+    margin-top: var(--sp-3);
     padding-top: var(--sp-3);
     border-top: 1px solid var(--surface-2);
+    flex-shrink: 0;
 }
 
 .form-inline-actions .btn {
     flex: 1;
+    min-height: 40px;
 }
 
 /* --- Actions Row (full page: filters + buttons on one line) --- */
@@ -130,6 +160,7 @@
     transition: border-color var(--duration) var(--ease-out);
     flex: 1;
     min-width: 0;
+    min-height: 40px;
 }
 
 .summary-item:hover {
@@ -144,7 +175,7 @@
     color: var(--text-primary);
     border: none;
     border-right: 1px solid var(--surface-3);
-    min-height: 36px;
+    min-height: 40px;
     flex: 1;
 }
 
@@ -177,7 +208,7 @@
 
 .file-label {
     display: block;
-    padding: var(--sp-3);
+    padding: var(--sp-10) var(--sp-3);
     background: var(--surface-1);
     border: 1.5px dashed var(--surface-3);
     border-radius: var(--radius-sm);
